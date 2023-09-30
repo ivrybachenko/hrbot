@@ -1,0 +1,6 @@
+**/.idea
+**/__pycache__
+/venv/
+/venv2/
+/langchain/models/
+/langchain/docs_uploader/processed_docs/

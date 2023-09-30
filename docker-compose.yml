@@ -1,0 +1,21 @@
+version: "3"
+services:
+  tg:
+    build: tg/
+    depends_on:
+      - langchain
+      - rabbitmq
+  langchain:
+    build: langchain/
+    depends_on:
+      - elasticsearch
+      - rabbitmq
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    ports:
+      - 15672:15672
