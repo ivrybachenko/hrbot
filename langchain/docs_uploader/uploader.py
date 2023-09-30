@@ -36,6 +36,7 @@ all_documents = load_all_documents_from_directory(root_directory)
 for d in all_documents:
     print(d, '\n')
 
-db = ElasticsearchStore.from_documents(
-    all_documents, embeddings, es_url="http://127.0.0.1:9200", index_name="text-basic")
-db.client.indices.refresh(index="text-basic")
+if __name__ == '__main__':
+    db = ElasticsearchStore.from_documents(
+        all_documents, embeddings, es_url="http://127.0.0.1:9200", index_name="text-basic")
+    db.client.indices.refresh(index="text-basic")
