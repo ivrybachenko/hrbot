@@ -2,11 +2,16 @@ version: "3"
 services:
   tg:
     build: tg/
+    environment:
+      - BOT_TOKEN
+      - MQ_CONNECTION_URL=amqp://guest:guest@rabbitmq:15672
     depends_on:
       - langchain
       - rabbitmq
   langchain:
     build: langchain/
+    environment:
+      - DB_URL=elasticsearch:15672
     depends_on:
       - elasticsearch
       - rabbitmq
